@@ -2,3 +2,70 @@ This tool saves your time and helps to calculate the string length text data wit
 This tool allows loading the text data URL, which loads text and count characters. Click on the URL button, Enter URL and Submit.
 Users can also count characters data from File by uploading the file.
 Calculate String Length Online works well on Windows, MAC, Linux, Chrome, Firefox, Edge, and Safari.
+
+
+=== ESP32 OTA Update via EC200U ===
+กำลังเริ่มต้น EC200U...
+CMD: AT
+RSP: 
+OK
+CMD: ATE0
+RSP: 
+OK
+CMD: AT+CPIN?
+RSP: 
++CPIN: READY
+OK
+กำลังลงทะเบียนเครือข่าย...
+CMD: AT+CREG?
+RSP: 
++CREG: 0,0
+OK
+CMD: AT+CREG?
+RSP: 
++CREG: 0,5
+OK
+ลงทะเบียนเครือข่ายสำเร็จ
+CMD: AT+QICSGP=1,1,"iot.1nce.net","","",1
+RSP: 
+OK
+CMD: AT+QIACT=1
+RSP: 
+OK
+CMD: AT+QIACT?
+RSP: 
++QIACT: 1,1,1,"10.252.214.135"
+OK
+ได้รับ IP แล้ว
+เริ่มกระบวนการอัพเดต firmware...
+เริ่มดาวน์โหลด firmware...
+CMD: AT+QHTTPCFG="contextid",1
+RSP: 
+OK
+CMD: AT+QHTTPCFG="sslctxid",1
+RSP: 
+OK
+CMD: https://raw.githubusercontent.com/LES-RD-Sampan/OTA_FILE/main/test_ota_2.ino.bin
+RSP: 
+CONNECT
+OK
+CMD: AT+QHTTPGET=80
+RSP: 
+OK
++QHTTPGET: 0,200,278272
+ขนาดไฟล์: 278272 bytes
+CMD: AT+QHTTPREAD=80
+RSP: 
+CONNECT
+�/�@�□□□□□□□□�
+กำลังอัพเดต firmware...
+พบ firmware header
+ดาวน์โหลดแล้ว: 10240 bytes (3.7%)
+ดาวน์โหลดแล้ว: 20480 bytes (7.4%)
+ดาวน์โหลดแล้ว: 30720 bytes (11.0%)
+ดาวน์โหลดแล้ว: 40960 bytes (14.7%)
+ดาวน์โหลดแล้ว: 51200 bytes (18.4%)
+E (100165) boot_comm: mismatch chip ID, expected 0, found 2283
+อัพเดตล้มเหลว
+Could Not Activate The Firmware
+=== อัพเดตล้มเหลว ===
